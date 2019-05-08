@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-cudnn7-runtime-ubuntu16.04
+FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 
 MAINTAINER luca.grazioli@outlook.com
 
@@ -26,4 +26,4 @@ RUN /opt/conda/envs/jupyter_env/bin/pip install torch
 RUN /opt/conda/envs/jupyter_env/bin/pip install fastai
 
 #Launch JUPYTER COMMAND
-CMD /opt/conda/envs/jupyter_env/bin/jupyter notebook --ip=* --no-browser --allow-root --notebook-dir=/tmp
+CMD /opt/conda/envs/jupyter_env/bin/jupyter notebook --ip=127.0.0.1 --no-browser --allow-root --notebook-dir=/tmp
