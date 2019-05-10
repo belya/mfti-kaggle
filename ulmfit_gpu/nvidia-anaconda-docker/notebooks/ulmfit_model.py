@@ -17,12 +17,12 @@ def return_tokenizer(*args, **kwargs):
 
 class ULMFiTModel:
     def load(self):
-        self.data = load_data("./", "ulmfit_data_clas")
+        self.data = load_data("./", "ulmfit_data_clas_big_bpe_big_dataset")
         self.classificator = text_classifier_learner(self.data, drop_mult=0.3, arch=AWD_LSTM)
-        self.classificator = self.classificator.load("./comments_model_5")
+        self.classificator = self.classificator.load("./comments_model_5_big_bpe")
 
     def preprocess(self, messages):
-        return [message.lower() for message in messages]
+        return messages
 
     def predict_probabilities(self, messages):
         probabilities = [self.classificator.predict(item=message) for message in tqdm_notebook(messages)]
